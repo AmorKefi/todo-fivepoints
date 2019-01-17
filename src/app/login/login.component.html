@@ -1,0 +1,21 @@
+<div class="card col-6 offset-3 p-0">
+  <div class="card-header text-center">Login</div>
+  <div class="card-body">
+    <form [formGroup]="LoginForm">
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        Username OR Password Incorrect
+      </div>
+      <div class="form-group">
+        <label for="Username">Username</label>
+        <input type="text" name="Username" id="Username" formControlName="Username" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="passsword" name="Password" id="Password" formControlName="Password" class="form-control">
+      </div>
+      <div class="from-group">
+        <button class="btn btn-primary col-3 offset-4" [disabled]="LoginForm.invalid" (click)="login()">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

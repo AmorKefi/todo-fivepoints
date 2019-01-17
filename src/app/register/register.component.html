@@ -1,0 +1,35 @@
+<div class="card p-0 col-6 offset-3">
+  <div class="card-header text-center">Register</div>
+  <div class="card-body">
+    <form [formGroup]="RegisterForm">
+      <div class="form-group">
+        <label for="Username">Username</label>
+        <input type="text" name="Username" id="Username" formControlName="Username" class="form-control">
+        <div *ngIf="RegisterForm.dirty && RegisterForm.hasError('required', ['Username'])" class="alert-danger">
+          Please Insert Valide Username !!!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" name="Password" id="Password" formControlName="Password" class="form-control">
+        <div class="alert-danger" *ngIf="RegisterForm.dirty && RegisterForm.hasError('required',['Password'])">
+          Please Insert Password
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="text" name="Username" id="Email" formControlName="Email" class="form-control">
+        <div class="alert-danger" *ngIf="RegisterForm.dirty && RegisterForm.hasError('email',['Email'])">
+          Please Insert a valide Email
+        </div>
+        <div class="alert-danger" *ngIf="RegisterForm.dirty && RegisterForm.hasError('required',['Email'])">
+          Please Insert your Email
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-primary float-right" (click)="Register()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
