@@ -9,13 +9,15 @@ import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppstateService } from './services/appstate.service';
+import { TodoComponent } from './todo/todo.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    MenuComponent
+    MenuComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
