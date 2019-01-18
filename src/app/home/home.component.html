@@ -13,7 +13,7 @@
         </form>
       </div>
       <ul class="list-group" *ngFor="let todo of Todos">
-        <li class="list-group-item">{{todo.Name}} <span class="float-right">
+        <li class="list-group-item" (click)="View(todo.Name)">{{todo.Name}} <span class="float-right">
             <input type="checkbox" [checked]="todo.done">
           </span></li>
       </ul>

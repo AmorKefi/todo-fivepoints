@@ -43,7 +43,7 @@ export class AppstateService implements OnInit {
       users.push(user);
       localStorage.setItem('Users', JSON.stringify(users));
       this.Usersdb = localStorage.getItem('Users');
-      localStorage.setItem('Conected', JSON.stringify(user));
+      localStorage.setItem('Conected', JSON.stringify(users));
       this.router.navigateByUrl('/Home');
     } else {
       users = JSON.parse(this.Usersdb);
@@ -90,5 +90,25 @@ export class AppstateService implements OnInit {
       Todos.push(Todo);
       localStorage.setItem('Todos', JSON.stringify(Todos));
     }
+  }
+  getToDoByName(Name) {
+    const Todos = JSON.parse(localStorage.getItem('Todos'));
+    if (Todos == null) {
+      return null;
+    } else {
+      return Todos.filter(todo => todo.Name === Name);
+    }
+  }
+  EditTodo(Name, EditValue) {
+    const Todos = JSON.parse(localStorage.getItem('Todos'));
+    Todos.forEach(element => {
+      if (element.Name === Name) {
+        element.Name = EditValue.Name;
+        element.done = EditValue.done;
+      }
+    });
+    console.log(Todos);
+    localStorage.setItem('Todos', JSON.stringify(Todos));
+    this.router.navigateByUrl('/Todo/' + EditValue.Name);
   }
 }

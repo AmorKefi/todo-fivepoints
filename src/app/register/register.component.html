@@ -1,7 +1,7 @@
 <div class="card p-0 col-6 offset-3">
   <div class="card-header text-center">Register</div>
   <div class="card-body">
-    <form [formGroup]="RegisterForm">
+    <!-- <form [formGroup]="RegisterForm">
       <div class="form-group">
         <label for="Username">Username</label>
         <input type="text" name="Username" id="Username" formControlName="Username" class="form-control">
@@ -30,6 +30,10 @@
         <button class="btn btn-danger">Cancel</button>
         <button class="btn btn-primary float-right" (click)="Register()">Register</button>
       </div>
-    </form>
+    </form> -->
+    <button class="btn btn-default" (click)="Register()">Google Auth</button>
   </div>
 </div>
+
+
+{{result | async | json}}

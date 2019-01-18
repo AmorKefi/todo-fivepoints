@@ -1,0 +1,19 @@
+<div class="card col-6 offset-3 p-0">
+  <div class="card-header text-center font-weight-bold">Edit</div>
+  <div class="card-body">
+    <form [formGroup]="EditForm">
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" name="Name" id="Name" formControlName="Name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="Done">Done</label>
+        <input type="checkbox" name="Done" id="Done" formControlName="done">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-danger" (click)="Cancel()">Cancel</button>
+        <button class="btn btn-success float-right" (click)="Edit()">Edit</button>
+      </div>
+    </form>
+  </div>
+</div>

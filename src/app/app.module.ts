@@ -9,7 +9,12 @@ import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppstateService } from './services/appstate.service';
-import { TodoComponent } from './todo/todo.component';
+import { EditComponent } from './home/edit/edit.component';
+import { TodoComponent } from './home/todo/todo.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,13 +22,17 @@ import { TodoComponent } from './todo/todo.component';
     LoginComponent,
     RegisterComponent,
     MenuComponent,
-    TodoComponent
+    TodoComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [AppstateService],
   bootstrap: [AppComponent]

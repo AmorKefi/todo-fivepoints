@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header text-center font-weight-bold"><a routerLink="/Edit/{{Todo[0].Name}}">{{Todo[0]?.Name}}</a></div>
+  <div class="card-body">
+    Statut : <span class="badge badge-success" *ngIf="Todo[0]?.done">Done</span><span class="badge badge-danger" *ngIf="!Todo[0]?.done">Not
+      Yet</span>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary float-right" (click)="Edit(Todo[0]?.Name)">
+      Edit
+    </button>
+  </div>
+</div>

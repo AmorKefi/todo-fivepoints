@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppstateService } from '../services/appstate.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class HomeComponent implements OnInit {
   user: any = this.userservice.getConnected()[0];
-  constructor(private userservice: AppstateService, private fb: FormBuilder) { }
+  constructor(private userservice: AppstateService, private fb: FormBuilder, private router: Router) { }
   TodosForm: FormGroup;
   Todos: any;
   ngOnInit() {
@@ -23,5 +24,8 @@ export class HomeComponent implements OnInit {
     this.TodosForm.value.done = false;
     this.userservice.Createtodo(this.TodosForm.value);
     this.ngOnInit();
+  }
+  View(Name) {
+    this.router.navigateByUrl('/Todo/' + Name);
   }
 }
