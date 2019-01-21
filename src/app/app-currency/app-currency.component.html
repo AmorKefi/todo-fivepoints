@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row py-md-5 mx-auto">
+    <div class="col-md-6 mx-auto">
+      <select class="form-control" (change)="onchange($event)">
+        <option value="" selected="true">Chose Value ...</option>
+        <option *ngFor="let code of Codes; let i=index" [value]="i">{{code.Code}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row py-md-5">
+    <div class="col-md-6">
+      <div class="todolist not-done">
+        <h5>currencies</h5>
+        <table class="table table-striped custab">
+          <thead>
+            <tr>
+              <th>language</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let Currencie of Currencies">
+            <td>{{keys(Currencie)}}</td>
+            <td>{{Currencie[keys(Currencie)]}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="todolist not-done">
+        <h5>countries</h5>
+        <table class="table table-striped custab">
+          <thead>
+            <tr>
+              <th>language</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let countries of countries">
+            <tr *ngFor="let country of countries">
+              <td>{{keys(country)[0]}}</td>
+              <td>{{country[keys(country)[0]]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

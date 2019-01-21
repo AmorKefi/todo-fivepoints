@@ -5,6 +5,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 export class User {
   username: string;
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   RegisterForm: FormGroup;
   result;
   constructor(private fb: FormBuilder, private userservice: AppstateService, private firebaseAuth: AngularFireAuth,
-    private Db: AngularFireDatabase) {
+    private Db: AngularFireDatabase, private router: Router) {
     this.result = this.Db.list('Users').snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -37,14 +38,18 @@ export class RegisterComponent implements OnInit {
         'Email': new FormControl('', [Validators.required, Validators.email])
       }
     );
-    console.log(this.result)
+    console.log(this.result);
   }
 
   Register() {
-    // this.userservice.Register(this.RegisterForm.value);
-    this.firebaseAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(res => {
-      const uid = res.user.uid;
-      this.Db.list('Users/').push({ uid, Username: res.user.displayName, Email: res.user.email, Todos: [] });
+    this.userservice.Register(this.RegisterForm.value).subscribe((res: any) => {
+      res.ok === 1 ? this.router.navigateByUrl('/Login') : this.router.navigateByUrl('/Register');
+    }, err => {
+      console.log(err);
     });
+    // this.firebaseAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(res => {
+    //   const uid = res.user.uid;
+    //   this.Db.list('Users/').push({ uid, Username: res.user.displayName, Email: res.user.email, Todos: [] });
+    // });
   }
 }

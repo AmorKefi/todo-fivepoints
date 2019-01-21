@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppstateService } from '../services/appstate.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
 export interface Todos {
   Done: Boolean;
   Name: string;
@@ -15,11 +16,11 @@ export interface Todos {
 export class LoginComponent implements OnInit {
   errorMessage: Boolean = false;
   LoginForm: FormGroup;
-  constructor(private userservice: AppstateService, private fb: FormBuilder, private afs: AngularFireDatabase) { }
+  constructor(private userservice: AppstateService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.LoginForm = this.fb.group({
-      'Username': new FormControl('', Validators.required),
+      'Email': new FormControl('', Validators.required),
       'Password': new FormControl('', Validators.required)
     });
     // this.afs.list('Users').valueChanges().subscribe(res => console.log(res));
@@ -28,7 +29,16 @@ export class LoginComponent implements OnInit {
     // console.log(parent);
   }
   login() {
-    this.errorMessage = !this.userservice.login(this.LoginForm.value);
+    this.userservice.login(this.LoginForm.value).subscribe((res: any) => {
+      if (res._id != null) {
+        localStorage.setItem('User_ID', JSON.stringify(res._id));
+        this.router.navigateByUrl('/Home');
+      } else {
+        alert(res.message);
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 
 }

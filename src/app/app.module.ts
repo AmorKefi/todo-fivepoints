@@ -15,6 +15,9 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AppCurrencyComponent } from './app-currency/app-currency.component';
+import { CurrencyService } from './services/currency.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     RegisterComponent,
     MenuComponent,
     TodoComponent,
-    EditComponent
+    EditComponent,
+    AppCurrencyComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +36,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
-  providers: [AppstateService],
+  providers: [AppstateService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

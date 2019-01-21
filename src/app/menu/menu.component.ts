@@ -7,7 +7,7 @@ import { AppstateService } from '../services/appstate.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  user = this.userservice.getConnected();
+  user = localStorage.getItem('User_ID');
   connected = false;
   constructor(private userservice: AppstateService) { }
 

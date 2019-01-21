@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { TodoComponent } from './home/todo/todo.component';
 import { EditComponent } from './home/edit/edit.component';
+import { AppCurrencyComponent } from './app-currency/app-currency.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'Edit/:Name', component: EditComponent
+  },
+  {
+    path: 'Currency', component: AppCurrencyComponent
   },
   {
     path: '**', redirectTo: 'Login'
