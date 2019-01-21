@@ -89,7 +89,7 @@ export class AppstateService implements OnInit {
     return result;
   }
   updateUser(User) {
-    return this.http.post(`${this.EntryPoint}/omar/user`, User);
+    return this.http.post(`${this.EntryPoint}omar/update/${User._id}`, User);
   }
   getToDoByName(Name) {
     // const Todos = JSON.parse(localStorage.getItem('Todos'));
