@@ -11,10 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppstateService } from './services/appstate.service';
 import { EditComponent } from './home/edit/edit.component';
 import { TodoComponent } from './home/todo/todo.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AppCurrencyComponent } from './app-currency/app-currency.component';
 import { CurrencyService } from './services/currency.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,9 +30,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     HttpClientModule
   ],
   providers: [AppstateService, CurrencyService],

@@ -8,12 +8,12 @@
         <form class="col-12" [formGroup]="TodosForm">
           <div class="form-group">
             <input type="text" name="Todo" id="Todo" class="form-control" formControlName="Name" placeholder="Write Somthing Todo">
-            <button class="btn float-right m-2 mr-0" (click)="Create()">+</button>
+            <button class="btn float-right m-2 mr-0" (click)="Create()" [disabled]="TodosForm.invalid">+</button>
           </div>
         </form>
       </div>
-      <ul class="list-group" *ngFor="let todo of Todos">
-        <li class="list-group-item" (click)="View(todo.Name)">{{todo.Name}} <span class="float-right">
+      <ul class="list-group" *ngFor="let todo of Todos; let i=index">
+        <li class="list-group-item" (click)="View(i)">{{todo.Name}} <span class="float-right">
             <input type="checkbox" [checked]="todo.done">
           </span></li>
       </ul>

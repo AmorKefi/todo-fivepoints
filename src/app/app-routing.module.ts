@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'Home', component: HomeComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'Todo/:Name', component: TodoComponent
+    path: 'Todo/:index', component: TodoComponent
   },
   {
     path: 'Edit/:Name', component: EditComponent

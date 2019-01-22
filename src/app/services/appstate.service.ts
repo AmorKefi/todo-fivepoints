@@ -98,6 +98,7 @@ export class AppstateService implements OnInit {
     // } else {
     //   return Todos.filter(todo => todo.Name === Name);
     // }
+    // this.http.get(`$${Name}`);
   }
   EditTodo(Name, EditValue) {
     const Todos = JSON.parse(localStorage.getItem('Todos'));

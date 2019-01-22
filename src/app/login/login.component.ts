@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       if (res._id != null) {
         localStorage.setItem('User_ID', JSON.stringify(res._id));
         this.router.navigateByUrl('/Home');
+        location.reload(true);
       } else {
         alert(res.message);
       }

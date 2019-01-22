@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
         res.Todos = [];
       }
       this.user = res;
+      this.Todos = this.user.Todos;
     }, err => {
       console.log(err);
     });
@@ -30,15 +31,12 @@ export class HomeComponent implements OnInit {
   }
   Create() {
     this.TodosForm.value.done = false;
-    console.log(this.TodosForm.value);
     const Todo = this.user.Todos;
     Todo.push(this.TodosForm.value);
-    console.log(Todo);
     const newUser = {
       ...this.user,
       'Todos': Todo
     };
-    console.log(newUser);
     // this.userservice.Createtodo(this.TodosForm.value).subscribe(res => {
     //   console.log(res);
     // }, err => {
@@ -46,12 +44,12 @@ export class HomeComponent implements OnInit {
     // });
     // this.ngOnInit();
     this.userservice.updateUser(newUser).subscribe((res: any) => {
-      console.log(res);
+      this.ngOnInit();
     }, err => {
       console.log(err);
     });
   }
-  View(Name) {
-    this.router.navigateByUrl('/Todo/' + Name);
+  View(index) {
+    this.router.navigateByUrl('/Todo/' + index);
   }
 }

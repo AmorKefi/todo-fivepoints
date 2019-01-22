@@ -31,7 +31,6 @@ export class AppCurrencyComponent implements OnInit {
       return Object.keys(country).map(
         (element) => ({ [element]: country[element] }));
     });
-    console.log(this.countries);
   }
 
 }
